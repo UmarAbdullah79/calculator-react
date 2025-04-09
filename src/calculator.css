@@ -1,0 +1,99 @@
+.calculator {
+    position: relative; /* For positioning the flying numbers */
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: #2c2c2c; /* Dark background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-family: Arial, sans-serif;
+    color: #ffffff; /* White text for contrast */
+    /* Removed overflow: hidden to allow flying numbers to be visible outside */
+}
+
+.display {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    background: #1e1e1e; /* Darker display background */
+    border-radius: 5px;
+    text-align: right;
+    padding: 10px;
+    font-size: 1.5rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ffffff; /* White text for display */
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    height: 50px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background: #444444; /* Dark button background */
+    color: #ffffff; /* White text */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #555555; /* Slightly lighter on hover */
+}
+
+button.clear {
+    background: #d9534f; /* Red for clear button */
+}
+
+button.clear:hover {
+    background: #c9302c; /* Darker red on hover */
+}
+
+button.equals {
+    background: #5cb85c; /* Green for equals button */
+}
+
+button.equals:hover {
+    background: #4cae4c; /* Darker green on hover */
+}
+
+button.zero {
+    grid-column: span 2;
+}
+
+/* Flying numbers animation */
+.flying-numbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevent interaction with flying numbers */
+    /* Removed overflow: hidden to allow flying numbers to be visible outside */
+}
+
+.flying-numbers span {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(0, 123, 255, 0.8); /* Vibrant blue with higher opacity */
+    animation: fly 5s linear infinite;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
